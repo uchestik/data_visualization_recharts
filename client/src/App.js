@@ -122,16 +122,22 @@ class App extends Component {
   renderChartVisuals = (data) => {
     if(data){
       return (
-        <LineChart width={730} height={250} data={data}
+        <React.Fragment>
+          <LineChart width={730} height={250} data={data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Legend />
-          <Line type="monotone" dataKey="BaseLoad" stroke="purple" />
-          <Line type="monotone" dataKey="TSL" stroke="#FF0000" />
-          <Line type="monotone" dataKey="WSL" stroke="#00FF00" />
-        </LineChart>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Legend />
+            <Line type="monotone" dataKey="BaseLoad" stroke="purple" />
+            <Line type="monotone" dataKey="TSL" stroke="#FF0000" />
+            <Line type="monotone" dataKey="WSL" stroke="#00FF00" />
+          </LineChart>
+          <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+            <div>Active Meter : {this.state.visualizedMeter}</div>
+            <div>Active Date : {this.state.visualizedDate}</div>
+          </div>
+        </React.Fragment>
       )
     }
     return null;
